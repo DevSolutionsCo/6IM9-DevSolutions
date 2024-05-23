@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Validacion Boleto</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="qrCode.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .card {
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    .card-img-top {
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+    }
+    .card-body {
+      padding: 2rem;
+    }
+    .card-title {
+      color: #333;
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+    .card-text {
+      color: #666;
+      font-size: 1.1rem;
+    }
+    hr {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      border-color: #ddd;
+    }
+    .btn-validate {
+      background-color: #007bff;
+      color: #fff;
+      border-radius: 25px;
+      padding: 0.5rem 1.5rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+    .btn-validate:hover {
+      background-color: #0056b3;
+      color: #fff;
+    }
+
+    .fanid-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .fanid-details {
+            margin-top: 20px;
+        }
+        .qr-code {
+            margin-top: 20px;
+        }
+        .navbar-brand img {
+            max-width: 30px;
+            margin-right: 10px;
+        }
+        .fanid-ticket {
+            border: 2px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            text-align: center;
+        }
+        .success-message {
+            color: #a72828;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+        
+
+  </style>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.html">
+            <img src="logo.png" alt="Logo"> DevSolutions
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Solicitud de Boleto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Compra de Boleto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="CreacionFanID.html">Creación FanID</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+  <div class="row justify-content-center mt-5">
+    <div class="col-sm-4 shadow p-3">
+      <h5 class="text-center">Escanear codigo QR</h5>
+      <div class="row text-center">
+        <a id="btn-scan-qr" href="#">
+          <img src="https://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2017/07/1499401426qr_icon.svg" class="img-fluid text-center" width="175">
+        </a>
+        <canvas hidden="" id="qr-canvas" class="img-fluid"></canvas>
+        </div>
+        <div class="row mx-5 my-3">
+            <button class="btn btn-validate btn-lg rounded-pill mt-3" onclick="encenderCamara()">Da click para escanear el boleto</button>
+      </div>
+    </div>
+  </div>
+  <script src="main.js"></script>
+</body>
+</html>

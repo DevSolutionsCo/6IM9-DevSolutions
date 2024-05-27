@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Próximos Eventos</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(90deg, #437470, #431B76);
+            color: white;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        .header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+        .header img {
+            height: 50px;
+        }
+        .header nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .events {
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            margin-top: 20px;
+            width: 80%;
+        }
+        .events-text {
+            flex: 1;
+            margin-right: 20px;
+        }
+        .events-text h1 {
+            font-size: 36px;
+        }
+        .events-text p {
+            text-align: left;
+            max-width: 600px;
+        }
+        .carousel {
+            width: 300px;
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+        }
+        .carousel img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 100%;
+            transition: left 0.5s ease;
+        }
+        .carousel img.active {
+            left: 0;
+        }
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .carousel-controls button {
+            background: none;
+            border: 1px solid white;
+            color: white;
+            padding: 5px 10px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="logo1.jpeg" alt="DevSolutions Logo">
+        <nav>
+            <a href="#">Solicitud de boleto</a>
+            <a href="#">Compra de boleto</a>
+            <a href="#">Creacion de Fan ID</a>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="events">
+            <div class="events-text">
+                <h1>Próximos Eventos</h1>
+                <p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.</p>
+            </div>
+            <div class="carousel">
+                <img src="evento1.png" alt="Event 1" class="active">
+                <img src="evento2.png" alt="Event 2">
+                <img src="evento3.png" alt="Event 3">
+            </div>
+        </div>
+        <div class="carousel-controls">
+            <button onclick="showSlide(0)">1</button>
+            <button onclick="showSlide(1)">2</button>
+            <button onclick="showSlide(2)">3</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel img');
+
+        function showSlide(index) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = index;
+            slides[currentSlide].classList.add('active');
+        }
+    </script>
+</body>
+</html>

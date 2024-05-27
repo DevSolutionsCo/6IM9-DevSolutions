@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asignación de Boletos</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .navbar-brand img {
+            max-width: 30px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.html">
+            <img src="logo.png" alt="Logo"> DevSolutions
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Eventos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Solicitud de Boleto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Asignacion de Boleto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Compra de Boleto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="CreacionFanID.html">Creación FanID</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Entrada al evento</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Validacion de Boleto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Validacion de FanID</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <h2 class="mt-5">Boletos Disponibles</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID del Boleto</th>
+                    <th>Precio</th>
+                    <th>Nombre del Evento</th>
+                    <th>Tipo de Boleto</th>
+                </tr>
+            </thead>
+            <tbody id="ticketsTable">
+                <tr>
+                    <td>1</td>
+                    <td>$50</td>
+                    <td>Concierto de Rock</td>
+                    <td>General</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>$100</td>
+                    <td>Concierto de Rock</td>
+                    <td>VIP</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>$30</td>
+                    <td>Obra de Teatro</td>
+                    <td>General</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>$70</td>
+                    <td>Obra de Teatro</td>
+                    <td>VIP</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2 class="mt-5">Boletos Asignados</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID del Boleto</th>
+                    <th>Precio</th>
+                    <th>Nombre del Evento</th>
+                    <th>Tipo de Boleto</th>
+                </tr>
+            </thead>
+            <tbody id="assignedTicketsTable">
+                <tr>
+                    <td>1</td>
+                    <td>$50</td>
+                    <td>Concierto de Rock</td>
+                    <td>General</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>$30</td>
+                    <td>Obra de Teatro</td>
+                    <td>General</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

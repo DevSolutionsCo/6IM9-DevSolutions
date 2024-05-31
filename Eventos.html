@@ -10,12 +10,14 @@
             font-family: Arial, sans-serif;
             background: linear-gradient(90deg, #437470, #431B76);
             color: white;
+            overflow-x: hidden; /* Evitar el desplazamiento horizontal */
         }
         .container {
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 20px;
+            max-width: 100%; /* Limitar el ancho máximo */
         }
         .header {
             width: 100%;
@@ -24,9 +26,14 @@
             align-items: center;
             padding: 10px 20px;
             background: rgba(0, 0, 0, 0.2);
+            box-sizing: border-box; /* Incluir el relleno y el borde en el tamaño del cuadro */
         }
         .header img {
             height: 50px;
+        }
+        .header nav {
+            display: flex;
+            flex-wrap: wrap;
         }
         .header nav a {
             color: white;
@@ -38,48 +45,126 @@
             flex-direction: row;
             align-items: flex-start;
             margin-top: 20px;
-            width: 80%;
+            width: 100%;
+            max-width: 1200px; /* Limitar el ancho máximo */
+            box-sizing: border-box; /* Incluir el relleno y el borde en el tamaño del cuadro */
+            flex-wrap: wrap; /* Permitir que los elementos se envuelvan en pantallas más pequeñas */
         }
         .events-text {
             flex: 1;
-            margin-right: 20px;
+            margin-right: 40px; /* Margen derecho para mover el texto más a la izquierda */
         }
         .events-text h1 {
             font-size: 36px;
+            margin: 0;
+            line-height: 1; /* Ajustar el interlineado para que los elementos estén más juntos */
+        }
+        .events-text h1 span {
+            display: block;
+        }
+        .underline {
+            width: 100px; /* Tamaño de la barra igual al ancho de "Eventos" */
+            height: 5px; /* Grosor de la línea */
+            background: white; /* Color de la línea */
+            margin-top: 5px;
         }
         .events-text p {
             text-align: left;
             max-width: 600px;
+            margin-top: 20px; /* Espacio entre la barra y el párrafo */
         }
         .carousel {
-            width: 300px;
-            height: 400px;
-            overflow: hidden;
+            display: flex;
+            align-items: center;
             position: relative;
+            width: 100%;
+            max-width: 900px; /* Ancho máximo para mostrar tres imágenes */
+            height: auto;
+            overflow: hidden; /* Ocultar desbordamiento */
         }
         .carousel img {
             width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 100%;
-            transition: left 0.5s ease;
+            height: auto;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .carousel img.inactive {
+            opacity: 0.5;
+            transform: scale(0.8);
         }
         .carousel img.active {
-            left: 0;
+            opacity: 1;
+            transform: scale(1);
         }
         .carousel-controls {
             display: flex;
             justify-content: center;
+            align-items: center;
             margin-top: 10px;
         }
         .carousel-controls button {
             background: none;
-            border: 1px solid white;
+            border: 2px solid white;
             color: white;
-            padding: 5px 10px;
-            margin: 0 5px;
+            padding: 5px;
+            margin: 0 10px;
             cursor: pointer;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .carousel-controls .indicator {
+            font-size: 18px;
+        }
+
+        /* Media Queries */
+        @media (max-width: 1200px) {
+            .carousel {
+                max-width: 600px;
+            }
+            .carousel img {
+                width: 200px;
+            }
+        }
+        @media (max-width: 768px) {
+            .events {
+                flex-direction: column;
+                align-items: center;
+            }
+            .events-text {
+                margin-right: 0;
+                margin-bottom: 20px;
+                text-align: center;
+            }
+            .carousel {
+                max-width: 300px;
+            }
+            .carousel img {
+                width: 100px;
+            }
+            .events-text p {
+                max-width: 100%;
+            }
+        }
+        @media (max-width: 480px) {
+            .header nav a {
+                margin: 0 5px;
+            }
+            .carousel {
+                max-width: 100%;
+            }
+            .carousel img {
+                width: 80px;
+            }
+            .events-text h1 {
+                font-size: 24px;
+            }
+            .underline {
+                width: 50px;
+                height: 3px;
+            }
         }
     </style>
 </head>
@@ -95,31 +180,58 @@
     <div class="container">
         <div class="events">
             <div class="events-text">
-                <h1>Próximos Eventos</h1>
+                <h1><span>Próximos</span><span>Eventos</span></h1>
+                <div class="underline"></div>
                 <p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.</p>
+                <div class="carousel-controls">
+                    <button onclick="prevSlide()">&#9664;</button> <!-- Flecha izquierda -->
+                    <span class="indicator">1/3</span> <!-- Indicador de imagen actual -->
+                    <button onclick="nextSlide()">&#9654;</button> <!-- Flecha derecha -->
+                </div>
             </div>
             <div class="carousel">
                 <img src="evento1.png" alt="Event 1" class="active">
-                <img src="evento2.png" alt="Event 2">
-                <img src="evento3.png" alt="Event 3">
+                <img src="evento2.png" alt="Event 2" class="inactive">
+                <img src="evento3.png" alt="Event 3" class="inactive">
             </div>
-        </div>
-        <div class="carousel-controls">
-            <button onclick="showSlide(0)">1</button>
-            <button onclick="showSlide(1)">2</button>
-            <button onclick="showSlide(2)">3</button>
         </div>
     </div>
 
     <script>
         let currentSlide = 0;
         const slides = document.querySelectorAll('.carousel img');
+        const indicator = document.querySelector('.carousel-controls .indicator');
 
         function showSlide(index) {
-            slides[currentSlide].classList.remove('active');
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active', 'inactive');
+                if (i === index) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.add('inactive');
+                }
+            });
             currentSlide = index;
-            slides[currentSlide].classList.add('active');
+            updateIndicator();
         }
+
+        function nextSlide() {
+            showSlide((currentSlide + 1) % slides.length);
+        }
+
+        function prevSlide() {
+            showSlide((currentSlide - 1 + slides.length) % slides.length);
+        }
+
+        function updateIndicator() {
+            indicator.textContent = `${currentSlide + 1}/${slides.length}`;
+        }
+
+        // Inicializar el indicador
+        updateIndicator();
+
+        // Inicializar el carrusel
+        showSlide(currentSlide);
     </script>
 </body>
 </html>

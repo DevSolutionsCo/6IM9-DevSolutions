@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Información del Boleto</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+    .card {
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    }
+    .card-img-top {
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+    }
+    .card-body {
+      padding: 2rem;
+    }
+    .card-title {
+      color: #333;
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+    .card-text {
+      color: #666;
+      font-size: 1.1rem;
+    }
+    hr {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      border-color: #ddd;
+    }
+    .btn-validate {
+      background-color: #007bff;
+      color: #fff;
+      border-radius: 25px;
+      padding: 0.5rem 1.5rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+    .btn-validate:hover {
+      background-color: #0056b3;
+      color: #fff;
+    }
+
+    .fanid-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .fanid-details {
+            margin-top: 20px;
+        }
+        .qr-code {
+            margin-top: 20px;
+        }
+        .navbar-brand img {
+            max-width: 30px;
+            margin-right: 10px;
+        }
+        .fanid-ticket {
+            border: 2px solid #ccc;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            text-align: center;
+        }
+        .success-message {
+            color: #a72828;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+  </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.html">
+            <img src="logo.png" alt="Logo"> DevSolutions
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Solicitud de Boleto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Compra de Boleto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="CreacionFanID.html">Creación FanID</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <img src="Clancy-World-Tour.jpeg" class="card-img-top" alt="Imagen del Evento">
+          <div class="card-body">
+            <h5 class="card-title">Nombre del Evento</h5>
+            <p class="card-text">Hora: 18:00</p>
+            <hr>
+            <h5 class="card-title">Información del Boleto</h5>
+            <p class="card-text">Nombre: Juan Pérez</p>
+            <p class="card-text">Número de Boleto: <span id="numero-boleto"></span></p>
+            <p class="card-text">Asiento: A12</p>
+            <!-- Agrega más información del boleto según tus necesidades -->
+            <div class="d-grid gap-2 mt-4">
+              <a href="validar_fanid.html" class="btn btn-validate">Validar FanID</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Obtener el número de boleto de la URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const numeroBoleto = urlParams.get('boleto');
+    
+    // Actualizar el número de boleto en el span
+    document.getElementById('numero-boleto').innerText = numeroBoleto;
+  </script>
+</body>
+</html>

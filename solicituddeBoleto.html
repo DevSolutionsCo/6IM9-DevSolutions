@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asignación de Boletos</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .fanid-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+        .fanid-details {
+            margin-top: 20px;
+        }
+        .qr-code {
+            margin-top: 20px;
+        }
+        .navbar-brand img {
+            max-width: 30px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="index.html">
+            <img src="logo.png" alt="Logo"> DevSolutions
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Solicitud de Boleto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Compra de Boleto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="CreacionFanID.html">Creación FanID</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-5">
+        <h1 class="mb-4">Solicitud de Boletos</h1>
+        
+
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="eventType">Tipo de Evento</label>
+                    <input type="text" class="form-control" id="eventType" placeholder="Concierto, Teatro, etc.">
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="eventName">Nombre del Evento</label>
+                    <input type="text" class="form-control" id="eventName" placeholder="Nombre del Evento">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="eventSeats">Asientos</label>
+                    <input type="text" class="form-control" id="eventSeats" placeholder="Número de Asientos">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="eventDate">Fecha</label>
+                    <input type="date" class="form-control" id="eventDate">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="eventTime">Hora</label>
+                    <input type="time" class="form-control" id="eventTime">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="eventPlace">Lugar</label>
+                <input type="text" class="form-control" id="eventPlace" placeholder="Lugar del Evento">
+            </div>
+            <button type="button" class="btn btn-primary">Solicitar Boletos</button>
+        </form>
+
+
+</body>
+</html>

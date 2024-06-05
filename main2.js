@@ -93,7 +93,7 @@ function validarFanID() {
         Swal.fire({
             icon: 'error',
             title: 'FanID inválido',
-            text: 'El FanID no coincide con los datos del boleto. Por favor, verifica nuevamente.',
+            text: 'El FanID no coincide con los datos del boleto.',
         });
     }
 }

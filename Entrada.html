@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
     <title>Revisión de Boletos</title>
     <style>
+           
         .concert-poster {
             max-width: 100%;
             height: auto;
@@ -22,7 +24,6 @@
             margin-top: 20px;
         }
     </style>
-
 <style>
     .fanid-container {
         text-align: center;
@@ -60,102 +61,64 @@
     }
 </style>
 
-<style>
-    .qr-container {
-        display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            text-align: center;
-            margin-top: -44px;
-    }
-    .qr-code {
-        filter: blur(10px);
-        transition: filter 0.5s ease;
-    }
-    .qr-code.clear {
-        filter: blur(0);
-    }
-    .btn {
-        margin-top: 20px;
-    }
-    .btn.blur {
-        filter: blur(10px);
-    }
-</style>
+    </style>
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="index.html">
-            <img src="logo.png" alt="Logo"> DevSolutions
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Solicitud de Boleto</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Compra de Boleto</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="CreacionFanID.html">Creación FanID</a>
-                </li>
-            </ul>
+    <div class="header">
+        <a href="index.html">
+           <img src="logo.png" alt="Logo"> DevSolutions
+       </a>
+       <nav>
+           
+           <a href="index.html">Eventos</a>
+           <a href="addevent.html">Agregar Evento</a>
+           <a href="solicituddeBoleto.html">Solicitud de boleto</a>
+           <a href="asignaciondeboleto.html">Asignacion de Boleto</a>
+           <a href="boleto.html">Compra de boleto</a>
+           <a href="CreacionFanID.html">Creacion de Fan ID</a>
+           <a href="Entrada.html">Entrada al evento</a>
+           <a href="validacionboleto.html">Validacion de Boleto</a>
+            <a href="validacionfanid.html">Validacion de FanID</a>
+           
+       </nav>
+   </div>
+    <div class="container">
+        <div class="events">
+            <div class="events-text">
+                <h1><span>Próximos</span><span>Eventos</span></h1>
+                <div class="underline"></div>
+                <p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto.</p>
+                <div class="carousel-controls">
+                    <button onclick="prevSlide()">&#9664;</button> <!-- Flecha izquierda -->
+                    <span class="indicator">1/3</span> <!-- Indicador de imagen actual -->
+                    <button onclick="nextSlide()">&#9654;</button> <!-- Flecha derecha -->
+                </div>
+            </div>
+            <div class="carousel" id="carousel">
+                <!-- Las imágenes del carrusel se generarán dinámicamente -->
+            </div>
         </div>
-    </nav>
-
-    <div class="container qr-container">
-        <h4>Entrada disponible por: <span id="countdown">00:10</span></h4>
-        <img src="Commons_QR_code.png" alt="Código QR" class="qr-code" id="qrCode">
-        <button class="btn btn-primary w-100" id="startButton">Activar Código QR</button>
     </div>
 
+    <script src="events.js"></script>
     <script>
-        let countdownTime = 10; // 5 minutos en segundos
-        let countdownInterval;
+        renderCarousel();
+        showSlide(currentSlide);
 
-        const countdownElement = document.getElementById('countdown');
-        const qrCodeElement = document.getElementById('qrCode');
-        const startButton = document.getElementById('startButton');
-
-        function startCountdown() {
-            let time = countdownTime;
-
-            // Cambiar el botón a borroso
-            startButton.classList.add('blur');
-
-            countdownInterval = setInterval(() => {
-                let minutes = Math.floor(time / 60);
-                let seconds = time % 60;
-
-                // Formatear el tiempo como MM:SS
-                minutes = minutes < 10 ? '0' + minutes : minutes;
-                seconds = seconds < 10 ? '0' + seconds : seconds;
-
-                countdownElement.innerHTML = `${minutes}:${seconds}`;
-
-                // Disminuir el tiempo del contador
-                time--;
-
-                // Cuando el contador llegue a 0, limpiar el intervalo y aplicar el desenfoque al código QR
-                if (time < 0) {
-                    clearInterval(countdownInterval);
-                    qrCodeElement.classList.remove('clear');
-                    startButton.classList.remove('blur');
-                }
-            }, 1000);
-
-            // Hacer visible el código QR
-            qrCodeElement.classList.add('clear');
+        // Añadir función de redirección específica para Entrada.html
+        function redirectToActivateEvent(index) {
+            localStorage.setItem('viewEventIndex', index);
+            window.location.href = 'ActivarEvento.html';
         }
 
-        startButton.addEventListener('click', startCountdown);
+        // Añadir event listeners para redirección
+        document.querySelectorAll('.carousel img').forEach((img, index) => {
+            img.addEventListener('click', () => redirectToActivateEvent(index));
+        });
     </script>
+
+
 
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

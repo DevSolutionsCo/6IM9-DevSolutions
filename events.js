@@ -41,7 +41,12 @@ function updateIndicator() {
 
 function viewEvent(index) {
     localStorage.setItem('viewEventIndex', index);
-    window.location.href = 'event.html';
+    const currentPath = window.location.pathname;
+    if (currentPath.includes('Entrada.html')) {
+        window.location.href = 'ActivarEvento.html';
+    } else {
+        window.location.href = 'event.html';
+    }
 }
 
 function loadEventDetails() {

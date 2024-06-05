@@ -3,13 +3,8 @@ let events = JSON.parse(localStorage.getItem('events')) || [
     { name: 'Evento 2', image: 'evento2.png', date: '15/06/2024', time: '20:00', location: 'Lugar 2', price: '70' },
     { name: 'Evento 3', image: 'evento3.png', date: '30/06/2024', time: '19:00', location: 'Lugar 3', price: '60' }
 ];
-
 let currentSlide = 0;
 let editIndex = -1;
-
-window.onload = function() {
-    renderCarousel();
-};
 
 function saveEvents() {
     localStorage.setItem('events', JSON.stringify(events));
@@ -23,6 +18,20 @@ function renderCarousel() {
     updateIndicator();
 }
 
+function showSlide(index) {
+    const slides = document.querySelectorAll('.carousel img');
+    slides.forEach((slide, i) => {
+        slide.classList.remove('active', 'inactive');
+        if (i === index) {
+            slide.classList.add('active');
+        } else {
+            slide.classList.add('inactive');
+        }
+    });
+    currentSlide = index;
+    updateIndicator();
+}
+
 function updateIndicator() {
     const indicator = document.querySelector('.carousel-controls .indicator');
     if (indicator) {
@@ -33,6 +42,20 @@ function updateIndicator() {
 function viewEvent(index) {
     localStorage.setItem('viewEventIndex', index);
     window.location.href = 'event.html';
+}
+
+function loadEventDetails() {
+    const index = localStorage.getItem('viewEventIndex');
+    if (index !== null) {
+        const event = events[index];
+        document.getElementById('eventTitle').textContent = event.name;
+        document.getElementById('eventImage').src = event.image;
+        document.getElementById('eventDate').textContent = event.date;
+        document.getElementById('eventTime').textContent = event.time;
+        document.getElementById('eventLocation').textContent = event.location;
+        document.getElementById('eventPrice').textContent = event.price;
+        editIndex = index;
+    }
 }
 
 function editEvent() {

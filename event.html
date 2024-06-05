@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Evento</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="header">
+        <img src="logo1.jpeg" alt="DevSolutions Logo">
+        <nav>
+            <a href="index.html">Inicio</a>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="event-details">
+            <h2 id="eventTitle">Detalles del Evento</h2>
+            <img id="eventImage" src="" alt="Imagen del Evento">
+            <p><strong>Fecha:</strong> <span id="eventDate"></span></p>
+            <p><strong>Hora:</strong> <span id="eventTime"></span></p>
+            <p><strong>Lugar:</strong> <span id="eventLocation"></span></p>
+            <p><strong>Precio:</strong> <span id="eventPrice"></span></p>
+            <button onclick="editEvent()">Modificar</button>
+            <button onclick="deleteEvent()">Eliminar</button>
+        </div>
+        <div class="form-container" id="formContainer">
+            <h2>Modificar Evento</h2>
+            <input type="text" id="eventName" placeholder="Nombre del Evento">
+            <input type="text" id="eventImageURL" placeholder="URL de la Imagen">
+            <input type="text" id="eventDateInput" placeholder="Fecha (dd/mm/yyyy)">
+            <input type="text" id="eventTimeInput" placeholder="Hora (hh:mm)">
+            <input type="text" id="eventLocationInput" placeholder="Lugar">
+            <input type="text" id="eventPriceInput" placeholder="Precio del Boleto">
+            <button onclick="saveEvent()">Guardar Evento</button>
+        </div>
+    </div>
+
+    <script src="events.js"></script>
+    <script>
+        loadEventDetails();
+    </script>
+</body>
+</html>

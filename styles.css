@@ -5,6 +5,11 @@ body {
     color: white;
     overflow-x: hidden;
 }
+
+.letrawhite{
+    color:white;
+}
+
 .container {
     display: flex;
     flex-direction: column;

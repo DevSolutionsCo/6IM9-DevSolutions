@@ -44,22 +44,19 @@
     </style>
 </head>
 <body>
-   <div class="header">
-         <a href="index.html"  class="letrawhite">
+    <div class="header">
+        <a href="index.html" class="letrawhite">
             <img src="logo.png" alt="Logo"> DevSolutions
         </a>
         <nav>
-        
             <a href="index.html">Eventos</a>
-            <a href="addevent.html">Agregar Evento</a>
             <a href="solicituddeBoleto.html">Solicitud de boleto</a>
             <a href="asignaciondeboleto.html">Asignacion de Boleto</a>
             <a href="compra.html">Compra de boleto</a>
             <a href="CreacionFanID.html">Creacion de Fan ID</a>
             <a href="Entrada.html">Entrada al evento</a>
             <a href="validacionboleto.html">Validacion de Boleto</a>
-             <a href="validacionfanid.html">Validacion de FanID</a>
-            
+            <a href="validacionfanid.html">Validacion de FanID</a>
         </nav>
     </div>
     <div class="container mt-5">
@@ -68,28 +65,23 @@
             <form id="fanid-form" novalidate>
                 <div class="form-group">
                     <label for="fullName">Nombre Completo</label>
-                    <input type="text" class="form-control" id="fullName" required>
-                    <div class="invalid-feedback">Este campo es obligatorio.</div>
+                    <input type="text" class="form-control" id="fullName">
                 </div>
                 <div class="form-group">
                     <label for="age">Edad</label>
-                    <input type="number" class="form-control" id="age" required>
-                    <div class="invalid-feedback">Este campo es obligatorio.</div>
+                    <input type="number" class="form-control" id="age">
                 </div>
                 <div class="form-group">
                     <label for="email">Correo Electrónico</label>
-                    <input type="email" class="form-control" id="email" required>
-                    <div class="invalid-feedback">Este campo es obligatorio.</div>
+                    <input type="email" class="form-control" id="email">
                 </div>
                 <div class="form-group">
                     <label for="phone">Número de Teléfono</label>
-                    <input type="tel" class="form-control" id="phone" required>
-                    <div class="invalid-feedback">Este campo es obligatorio.</div>
+                    <input type="tel" class="form-control" id="phone">
                 </div>
                 <div class="form-group">
                     <label for="photo">Fotografía</label>
-                    <input type="file" class="form-control-file" id="photo" accept="image/*" required>
-                    <div class="invalid-feedback">Este campo es obligatorio.</div>
+                    <input type="file" class="form-control-file" id="photo" accept="image/*">
                 </div>
                 <button type="submit" class="btn btn-primary">Crear FanID</button>
             </form>
@@ -119,41 +111,33 @@
         document.addEventListener('DOMContentLoaded', function () {
             var form = document.getElementById('fanid-form');
             form.addEventListener('submit', function (event) {
-                event.preventDefault();
-                event.stopPropagation();
-                
-                if (form.checkValidity() === false) {
-                    form.classList.add('was-validated');
-                } else {
-                    createFanID();
-                }
-            }, false);
+                event.preventDefault(); 
+                createFanID(); 
+            });
         });
 
         function createFanID() {
-            var fullName = document.getElementById('fullName').value;
-            var age = document.getElementById('age').value;
-            var email = document.getElementById('email').value;
-            var phone = document.getElementById('phone').value;
-            var photo = document.getElementById('photo').files[0];
-            var reader = new FileReader();
+            var fullName = "Juan Alberto Perez Mendoza";
+            var age = 24;
+            var email = "juanp@gmail.com";
+            var phone = "5578095678";
+            var photo = "perfil.png";
 
-            reader.onload = function (e) {
-                document.getElementById('fanid-photo').src = e.target.result;
-                document.getElementById('fanid-name').textContent = 'Nombre: ' + fullName;
-                document.getElementById('fanid-age').textContent = 'Edad: ' + age;
-                document.getElementById('fanid-email').textContent = 'Correo: ' + email;
-                document.getElementById('fanid-phone').textContent = 'Teléfono: ' + phone;
+            
+            document.getElementById('fanid-photo').src = photo;
+            document.getElementById('fanid-name').textContent = 'Nombre: ' + fullName;
+            document.getElementById('fanid-age').textContent = 'Edad: ' + age;
+            document.getElementById('fanid-email').textContent = 'Correo: ' + email;
+            document.getElementById('fanid-phone').textContent = 'Teléfono: ' + phone;
 
-                var fanid = Date.now();
-                QRCode.toDataURL(fanid.toString(), function (err, url) {
-                    document.getElementById('fanid-qr').src = url;
-                });
+            var fanid = Date.now(); 
+            QRCode.toDataURL(fanid.toString(), function (err, url) {
+                document.getElementById('fanid-qr').src = url;
+            });
 
-                document.getElementById('form-container').classList.add('d-none');
-                document.querySelector('.fanid-container').classList.remove('d-none');
-            };
-            reader.readAsDataURL(photo);
+        
+            document.getElementById('form-container').classList.add('d-none');
+            document.querySelector('.fanid-container').classList.remove('d-none');
         }
     </script>
 </body>

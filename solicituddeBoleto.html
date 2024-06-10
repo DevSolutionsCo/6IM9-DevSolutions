@@ -32,7 +32,7 @@
         <nav>
             
             <a href="index.html">Eventos</a>
-            <a href="addevent.html">Agregar Evento</a>
+   
             <a href="solicituddeBoleto.html">Solicitud de boleto</a>
             <a href="asignaciondeboleto.html">Asignacion de Boleto</a>
             <a href="compra.html">Compra de boleto</a>
@@ -76,8 +76,20 @@
                 <label for="eventPlace">Lugar</label>
                 <input type="text" class="form-control" id="eventPlace" placeholder="Lugar del Evento">
             </div>
-            <button type="button" class="btn btn-primary">Solicitar Boletos</button>
+            <button type="button" class="btn btn-primary" onclick="solboleto()">Solicitar Boletos</button>
         </form>
+        <script>
+            function solboleto() {
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Los boletos han sido solicitados!",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+            }
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 </body>

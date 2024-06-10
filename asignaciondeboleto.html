@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,13 +15,14 @@
         }
     </style>
 </head>
+
 <body>
     <div class="header">
-         <a href="index.html"  class="letrawhite">
+        <a href="index.html" class="letrawhite">
             <img src="logo.png" alt="Logo"> DevSolutions
         </a>
         <nav>
-            
+
             <a href="index.html">Eventos</a>
             <a href="addevent.html">Agregar Evento</a>
             <a href="solicituddeBoleto.html">Solicitud de boleto</a>
@@ -30,8 +31,8 @@
             <a href="CreacionFanID.html">Creacion de Fan ID</a>
             <a href="Entrada.html">Entrada al evento</a>
             <a href="validacionboleto.html">Validacion de Boleto</a>
-             <a href="validacionfanid.html">Validacion de FanID</a>
-            
+            <a href="validacionfanid.html">Validacion de FanID</a>
+
         </nav>
     </div>
     <div class="container mt-5">
@@ -72,6 +73,9 @@
                 </tr>
             </tbody>
         </table>
+        <div class="text-center">
+            <button type="button" class="btn btn-primary" onclick="llenarTabla()">Sortear boletos</button>
+        </div>
 
         <h2 class="mt-5">Boletos Asignados</h2>
         <table class="table table-bordered">
@@ -84,24 +88,41 @@
                 </tr>
             </thead>
             <tbody id="assignedTicketsTable">
-                <tr>
-                    <td>1</td>
-                    <td>$50</td>
-                    <td>Concierto de Rock</td>
-                    <td>General</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>$30</td>
-                    <td>Obra de Teatro</td>
-                    <td>General</td>
-                </tr>
+                <!-- Esta tabla estará vacía y se llenará dinámicamente con JavaScript -->
             </tbody>
         </table>
+
     </div>
+
+    <script>
+        function llenarTabla() {
+            var ticketsTable = document.getElementById("ticketsTable");
+            var assignedTicketsTable = document.getElementById("assignedTicketsTable");
+
+            // Copiar filas de ticketsTable a assignedTicketsTable
+            assignedTicketsTable.innerHTML = "";
+            for (var i = 0; i < ticketsTable.rows.length; i++) {
+                var newRow = assignedTicketsTable.insertRow();
+                for (var j = 0; j < ticketsTable.rows[i].cells.length; j++) {
+                    var newCell = newRow.insertCell(j);
+                    newCell.innerHTML = ticketsTable.rows[i].cells[j].innerHTML;
+                }
+            }
+
+            Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Los boletos han sido sorteados!",
+                showConfirmButton: false,
+                timer: 1500
+            });
+        }
+    </script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
+
 </html>

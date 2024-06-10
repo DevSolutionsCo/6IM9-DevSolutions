@@ -15,7 +15,6 @@
         <nav>
             
             <a href="index.html">Eventos</a>
-            <a href="addevent.html">Agregar Evento</a>
             <a href="solicituddeBoleto.html">Solicitud de boleto</a>
             <a href="asignaciondeboleto.html">Asignacion de Boleto</a>
             <a href="compra.html">Compra de boleto</a>
@@ -43,6 +42,9 @@
                 <!-- Las imágenes del carrusel se generarán dinámicamente -->
             </div>
         </div>
+        <div class="event-details">
+            <button onclick="window.location.href = 'addevent.html'">Agregar Evento</button>
+        </div>
     </div>
 
     <script src="events.js"></script>
@@ -50,6 +52,8 @@
         renderCarousel();
         showSlide(currentSlide);
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </body>
 </html>
 
